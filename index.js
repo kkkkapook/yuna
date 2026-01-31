@@ -7,14 +7,6 @@
     Events = Matter.Events,
     Composite = Matter.Composite;
 
-  let soundEnabled = true;
-  const soundToggle = document.getElementById("soundToggle");
-
-  soundToggle.addEventListener("click", () => {
-    soundEnabled = !soundEnabled;
-    soundToggle.textContent = soundEnabled ? "🔊 ON" : "🔇 OFF";
-  });
-
   const parent = document.getElementById("game");
   const canvas = document.getElementById("canvas");
   var gameOverlayer = document.getElementById("overlay");
@@ -237,16 +229,14 @@
             newBall(
               (bodies[0].position.x + bodies[1].position.x) / 2,
               (bodies[0].position.y + bodies[1].position.y) / 2,
-              bodies[0].size === 11 ? 11 : bodies[0].size + 1
+              bodies[0].size === 13 ? 13 : bodies[0].size + 1
             )
           );
 
           score += bodies[0].size;
 
-          if (soundEnabled) {
-            var audio = new Audio("assets/pop.wav");
-            audio.play();
-          }
+          var audio = new Audio("assets/pop.wav");
+          audio.play();
         }
       }
     });
